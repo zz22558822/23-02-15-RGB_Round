@@ -14,6 +14,10 @@ let maxWidth3;
 let dataCase = 0;
 // 寬高情境
 let WHCase = 0;
+// 時間
+let newTime;
+
+
 
 // --------------------(AXJX)--------------------
 
@@ -41,6 +45,8 @@ function getData() {
 
             // 更新資料數據
             dataHeinght()
+            // 更新時間顯示
+            updataClock()
 
 
             
@@ -49,8 +55,6 @@ function getData() {
         }
     })
 }
-
-
 
 
 // --------------------(主程式)--------------------
@@ -94,9 +98,15 @@ function dataHeinght() {
                 document.querySelector('.red').classList.add('Z2')
                 document.querySelector('.blue').classList.add('Z1')
     
+                // label顯示變更
+                document.querySelector('.ball1').classList.add('green')
+                document.querySelector('.text1').innerHTML = '產能'
+                document.querySelector('.ball2').classList.add('yellow')
+                document.querySelector('.text2').innerHTML = '負荷'
+                document.querySelector('.ball3').classList.add('white')
+                document.querySelector('.text3').innerHTML = '報工'
             }
         }
-
         // 情境2 : 產能 > 報工 > 負荷
         if (data[0].產能 >= data[0].報工){
             if (data[0].報工 >= data[0].負荷) {
@@ -132,7 +142,14 @@ function dataHeinght() {
                 document.querySelector('.green').classList.add('Z3')
                 document.querySelector('.red').classList.add('Z1')
                 document.querySelector('.blue').classList.add('Z2')
-       
+           
+                // label顯示變更
+                document.querySelector('.ball1').classList.add('green')
+                document.querySelector('.text1').innerHTML = '產能'
+                document.querySelector('.ball2').classList.add('blue-green')
+                document.querySelector('.text2').innerHTML = '報工'
+                document.querySelector('.ball3').classList.add('white')
+                document.querySelector('.text3').innerHTML = '負荷'
             }
         }
         // 情境3 : 負荷 > 產能 > 報工
@@ -169,7 +186,15 @@ function dataHeinght() {
                 //添加 Z-index 層級
                 document.querySelector('.green').classList.add('Z2')
                 document.querySelector('.red').classList.add('Z3')
-                document.querySelector('.blue').classList.add('Z1')    
+                document.querySelector('.blue').classList.add('Z1')
+                
+                // label顯示變更
+                document.querySelector('.ball1').classList.add('red')
+                document.querySelector('.text1').innerHTML = '負荷'
+                document.querySelector('.ball2').classList.add('yellow')
+                document.querySelector('.text2').innerHTML = '產能'
+                document.querySelector('.ball3').classList.add('white')
+                document.querySelector('.text3').innerHTML = '報工'
             }
         }
         // 情境4 : 負荷 > 報工 > 產能
@@ -207,6 +232,14 @@ function dataHeinght() {
                 document.querySelector('.green').classList.add('Z1')
                 document.querySelector('.red').classList.add('Z3')
                 document.querySelector('.blue').classList.add('Z2')
+
+                // label顯示變更
+                document.querySelector('.ball1').classList.add('red')
+                document.querySelector('.text1').innerHTML = '負荷'
+                document.querySelector('.ball2').classList.add('purple')
+                document.querySelector('.text2').innerHTML = '報工'
+                document.querySelector('.ball3').classList.add('white')
+                document.querySelector('.text3').innerHTML = '產能'
             }
         }
         // 情境5 : 報工 > 負荷 > 產能
@@ -243,7 +276,15 @@ function dataHeinght() {
                 //添加 Z-index 層級
                 document.querySelector('.green').classList.add('Z1')
                 document.querySelector('.red').classList.add('Z2')
-                document.querySelector('.blue').classList.add('Z3')    
+                document.querySelector('.blue').classList.add('Z3')
+                
+                // label顯示變更
+                document.querySelector('.ball1').classList.add('blue')
+                document.querySelector('.text1').innerHTML = '報工'
+                document.querySelector('.ball2').classList.add('purple')
+                document.querySelector('.text2').innerHTML = '負荷'
+                document.querySelector('.ball3').classList.add('white')
+                document.querySelector('.text3').innerHTML = '產能'
             }
         }
         // 情境6 : 報工 > 產能 > 負荷
@@ -280,8 +321,45 @@ function dataHeinght() {
                 //添加 Z-index 層級
                 document.querySelector('.green').classList.add('Z2')
                 document.querySelector('.red').classList.add('Z1')
-                document.querySelector('.blue').classList.add('Z3')    
+                document.querySelector('.blue').classList.add('Z3')
+                
+                // label顯示變更
+                document.querySelector('.ball1').classList.add('blue')
+                document.querySelector('.text1').innerHTML = '報工'
+                document.querySelector('.ball2').classList.add('blue-green')
+                document.querySelector('.text2').innerHTML = '產能'
+                document.querySelector('.ball3').classList.add('white')
+                document.querySelector('.text3').innerHTML = '負荷'
             }
+        }
+        // 全白色
+        if (data[0].產能 == data[0].負荷 && data[0].產能 == data[0].報工) {
+            //label移除
+            document.querySelector('.ball1').classList.remove('purple')
+            document.querySelector('.ball1').classList.remove('white')
+            document.querySelector('.ball1').classList.remove('blue-green')
+            document.querySelector('.ball1').classList.remove('yellow')
+            document.querySelector('.ball1').classList.remove('green')
+            document.querySelector('.ball1').classList.remove('red')
+            document.querySelector('.ball1').classList.remove('blue')
+            document.querySelector('.ball2').classList.remove('purple')
+            document.querySelector('.ball2').classList.remove('white')
+            document.querySelector('.ball2').classList.remove('blue-green')
+            document.querySelector('.ball2').classList.remove('yellow')
+            document.querySelector('.ball2').classList.remove('green')
+            document.querySelector('.ball2').classList.remove('red')
+            document.querySelector('.ball2').classList.remove('blue')
+            document.querySelector('.ball3').classList.remove('purple')
+            document.querySelector('.ball3').classList.remove('white')
+            document.querySelector('.ball3').classList.remove('blue-green')
+            document.querySelector('.ball3').classList.remove('yellow')
+            document.querySelector('.ball3').classList.remove('green')
+            document.querySelector('.ball3').classList.remove('red')
+            document.querySelector('.ball3').classList.remove('blue')
+            // label 顯示變更
+            document.querySelector('.ball1').classList.add('white')
+            document.querySelector('.ball2').classList.add('white')
+            document.querySelector('.ball3').classList.add('white')
         }
     }else{
         console.log('沒有正確資料');
@@ -313,12 +391,29 @@ function removeClass() {
     document.querySelector('.blue').classList.remove('Z2')
     document.querySelector('.blue').classList.remove('Z3')
 
+    //label移除
+    document.querySelector('.ball1').classList.remove('purple')
+    document.querySelector('.ball1').classList.remove('white')
+    document.querySelector('.ball1').classList.remove('blue-green')
+    document.querySelector('.ball1').classList.remove('yellow')
+    document.querySelector('.ball1').classList.remove('green')
+    document.querySelector('.ball1').classList.remove('red')
+    document.querySelector('.ball1').classList.remove('blue')
+    document.querySelector('.ball2').classList.remove('purple')
+    document.querySelector('.ball2').classList.remove('white')
+    document.querySelector('.ball2').classList.remove('blue-green')
+    document.querySelector('.ball2').classList.remove('yellow')
+    document.querySelector('.ball2').classList.remove('green')
+    document.querySelector('.ball2').classList.remove('red')
+    document.querySelector('.ball2').classList.remove('blue')
+    document.querySelector('.ball3').classList.remove('purple')
+    document.querySelector('.ball3').classList.remove('white')
+    document.querySelector('.ball3').classList.remove('blue-green')
+    document.querySelector('.ball3').classList.remove('yellow')
+    document.querySelector('.ball3').classList.remove('green')
+    document.querySelector('.ball3').classList.remove('red')
+    document.querySelector('.ball3').classList.remove('blue')
 }
-
-
-
-
-
 
 
 
@@ -410,11 +505,31 @@ window.onresize = function(){
 }
 
 
+// --------------------(DOM元素截圖並下載)--------------------
+
+// 截圖 (dom-to-image-more)
+function screenshot() {
+
+    // 過濾不要截圖的元素 Class版本
+    function filter(node) {
+        if (node.classList) return !node.classList.contains("screenshot");
+        return true;
+     }
+
+    //  保存圖片
+    domtoimage.toBlob(document.getElementById('wrap'), {filter: filter})
+        .then(function (blob) {
+            window.saveAs(blob, newTime+'.png');
+        });
+
+
+}
+document.querySelector('.screenshot').addEventListener('click', screenshot)
+
 
 // --------------------(自動化刷新)--------------------
 // 每10s 重新 updata
 setInterval("updata()","3000");
-setInterval("upDisplay()","1000");
 function updata() {
     let upSwitch = 0
     // 讀取本地之JSON檔 添加引數為當前時間達成檔案不重複的效果來杜絕快取
@@ -471,6 +586,7 @@ function updata() {
 }
 
 // 解決刷新Bug
+setInterval("upDisplay()","1000");
 function upDisplay() {
     if (window.innerHeight != (maxWidth1 + 70) && window.innerWidth != (maxWidth1 + 70)) {
         document.querySelector('.wrap').style.height = (window.innerHeight -41) + "px"
@@ -544,6 +660,26 @@ function upDisplay() {
     }
 }
 
+// 時鐘日期顯示
+setInterval("updataClock()","1000");
+function updataClock() {
+    newTime = String(new Date().getFullYear()+'-'+(new Date().getMonth()+1)+'-'+new Date().getDate()+'_'+new Date().getHours()+'.'+new Date().getMinutes()+'.'+new Date().getSeconds())
+    document.querySelector('.clock .date').innerHTML = String(new Date().getFullYear()+'-'+(new Date().getMonth()+1)+'-'+new Date().getDate())
+    document.querySelector('.clock .time').innerHTML = String(new Date().toTimeString().substring(0, 8))
+}
+
+// 每天 12:30、17:30 執行 F5 重新整理 (v2更新)
+setInterval("refresh()","500");
+function refresh() {
+    // 現在時間 redate
+    let re_date = new Date().toTimeString().substring(0, 8)
+
+    // 如果現在時間為 12:30:50 就執行
+    if (re_date == '12:30:50' || re_date == '17:30:50') {
+        // 網頁重新整理
+        window.location.reload(true);
+    }
+}
 
 // --------------------(初始化)--------------------
 // 初始化

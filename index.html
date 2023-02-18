@@ -16,17 +16,47 @@
 
 
 
-    <div class="wrap">
+    <div id="wrap" class="wrap">
 
         <!-- 渲染區 -->
         <div class="content">
 
-            <div class="green"></div>
-            <div class="red"></div>
-            <div class="blue"></div>
+          <div class="green"></div>
+          <div class="red"></div>
+          <div class="blue"></div>
 
         </div>
 
+        <!-- 標籤區 -->
+        <div class="labelBox">
+          <div class="miniBox">
+            <div class="mini mini1">
+              <div class="ball ball1"></div>
+              <div class="text text1"></div>
+            </div>
+            <div class="mini mini2">
+              <div class="ball ball2"></div>
+              <div class="text text2"></div>
+            </div>
+            <div class="mini mini3">
+              <div class="ball ball3"></div>
+              <div class="text text3"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 時鐘 -->
+        <div class="clockBox">
+          <div class="clock">
+            <p class="date"></p>
+            <p class="time"></p>
+          </div>
+        </div>
+
+        <!-- 節圖按鈕 -->
+        <div class="screenshot">
+          <div class="screenshotBtn"></div>
+        </div>
 
         <!-- 資料渲染失敗 -->
         <div class="notData no">
@@ -40,15 +70,10 @@
 
 
 
-
-
-
-
-
-
-
-
-
+    <!-- 截圖DOM元素插件 -->
+    <script src="js/dom-to-image-more.min.js"></script>
+    <!-- 檔案存為PNG下載插件 -->
+    <script src="js/FileSaver.min.js"></script>
     <script src="js/all.js"></script>
   </body>
 </html>

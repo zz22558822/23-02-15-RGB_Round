@@ -59,28 +59,31 @@ body{
             align-items: center;
 
             .blue{
-                width: 60px;
-                height: 60px;
+                width: 1px;
+                height: 1px;
                 background-color: blue;
                 border-radius: 50%;
                 position: absolute;
                 transition: all 2s;
+                box-shadow:2px 2px 2px rgba(20%,20%,40%,0.6),4px 4px 6px rgba(20%,20%,40%,0.4),6px 6px 12px rgba(20%,20%,40%,0.4);
             }
             .red{
-                width: 70px;
-                height: 70px;
+                width: 1px;
+                height: 1px;
                 background-color: red;
                 border-radius: 50%;
                 position: absolute;
                 transition: all 2s;
+                box-shadow:2px 2px 2px rgba(20%,20%,40%,0.6),4px 4px 6px rgba(20%,20%,40%,0.4),6px 6px 12px rgba(20%,20%,40%,0.4);
             }
             .green{
-                width: 80px;
-                height: 80px;
+                width: 1px;
+                height: 1px;
                 background-color: green;
                 border-radius: 50%;
                 position: absolute;
                 transition: all 2s;
+                box-shadow:2px 2px 2px rgba(20%,20%,40%,0.6),4px 4px 6px rgba(20%,20%,40%,0.4),6px 6px 12px rgba(20%,20%,40%,0.4);
             }
             .white{
                 background-color: $white;
@@ -106,7 +109,137 @@ body{
 
         }
 
-    
+        
+        .labelBox{
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            align-items: center;
+
+            // 防止反白
+            -webkit-user-select:none;
+            -moz-user-select:none;
+            -o-user-select:none;
+            user-select:none;
+
+            .miniBox{
+                margin-left: 25px;
+                // background: #FFF;
+                z-index: 100;
+                width: 15%;
+                height: 40%;
+                min-width: 200px;
+                min-height: 350px;
+                border-radius: 15px;
+                border: $green solid 8px;
+
+                .mini{
+                    height: 33%;
+                    display: flex;
+                    justify-content: space-around;
+                    align-items: center;
+                    margin-left: 5%;
+                    
+                    .ball{
+                        // border: #FFF solid 5px;
+                        border-radius: 50%;
+                        width: 70px;
+                        height: 70px;
+                        transition: all 2s;
+                        box-shadow:2px 2px 2px rgba(20%,20%,40%,0.6),4px 4px 6px rgba(20%,20%,40%,0.4),6px 6px 12px rgba(20%,20%,40%,0.4);
+                    }
+                    .text{
+                        color: #FFF;
+                        font-size: 36px;
+                        width: 60%;
+                        text-align: center;
+                    }
+
+                    .red{
+                        background-color: red;
+                    }
+                    .blue{
+                        background-color: blue;
+                    }
+                    .green{
+                        background-color: green;
+                    }
+                    .white{
+                        background-color: $white;
+                    }
+                    .purple{
+                        background-color: $purple;
+                    }
+                    .yellow{
+                        background-color: $yellow;
+                    }
+                    .blue-green{
+                        background-color: $blue-green;
+                    }
+                }
+            }
+        }
+
+        .clockBox{
+            position: fixed;
+            bottom: 0;
+            right: 0;
+
+            // 防止反白
+            -webkit-user-select:none;
+            -moz-user-select:none;
+            -o-user-select:none;
+            user-select:none;
+            .clock{
+                width: 370px;
+                height: 135px;
+                font-family: 'Share Tech Mono', monospace;
+                color: #ffffff;
+                text-align: center;
+                // transform: translate(-10%, -20%); //因截圖會跑版 改用其他方式達成
+                color: #daf6ff;
+                text-shadow: 0 0 20px rgba(10, 175, 230, 1),  0 0 20px rgba(10, 175, 230, 0);
+                .time {
+                    letter-spacing: 0.05em;
+                    font-size: 60px;
+                    padding: 5px 0;
+                }
+                .date {
+                    letter-spacing: 0.1em;
+                    font-size: 32px;
+                }
+            }
+        }
+
+        .screenshot{
+            position: fixed;
+            top: 0%;
+            right: 0%;
+            .screenshotBtn{
+                width: 80px;
+                height: 80px;
+                background: url(../images/screenshot.png) no-repeat;
+                transform: translate(-20%, 20%);
+                background-repeat: no-repeat; // 讓圖片不重複
+                background-position: center; // 讓圖片對齊中心
+                background-size: 60px;
+                object-fit: contain;
+                transition: all 0.25s;
+                &:hover{
+                    background-size: 70px;
+                    cursor: pointer
+                }
+                &:active{
+                    background-size: 60px;
+                    transition: all 0.1s;
+                }
+
+            }
+        }
+
         .notData{
             display: flex;
             flex-direction: column;
@@ -162,6 +295,11 @@ body{
                 display: none;
             }
         }
+    }
+
+    // 因為截圖會將IMG元素創建，必須隱藏 或使用偽元素
+    img{
+        display: none;
     }
 }
 
